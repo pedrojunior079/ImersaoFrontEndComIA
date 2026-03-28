@@ -1,0 +1,577 @@
+/* Reset e variáveis */
+:root {
+  /* Define as cores principais da paleta Netflix */
+  --netflix-red: #e50914;
+  --netflix-black: #141414;
+  --netflix-dark-gray: #2c2c2c;
+  --netflix-gray: #808080;
+  --netflix-light-gray: #b3b3b3;
+  --netflix-white: #ffffff;
+  /* Define a transição padrão para animações suaves de 0.3s */
+  --netflix-transition: all 0.3s ease;
+
+  /* Cores para DARK MODE (padrão) */
+  --bg-primary: #141414;
+  --bg-secondary: #2c2c2c;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --border-color: #404040;
+}
+
+/* Modo LIGHT */
+html.light-mode {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #000000;
+  --text-secondary: #666666;
+  --border-color: #e0e0e0;
+}
+
+* {
+  /* Remove margem padrão de todos os elementos */
+  margin: 0;
+  /* Remove preenchimento padrão de todos os elementos */
+  padding: 0;
+  /* Faz o padding e border serem inclusos na largura/altura do elemento */
+  box-sizing: border-box;
+}
+
+body {
+  /* Define a fonte da Netflix (Helvetica Neue com fallbacks) */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Define o fundo usando a variável de tema */
+  background-color: var(--bg-primary);
+  /* Define a cor do texto usando a variável de tema */
+  color: var(--text-primary);
+  /* Garante que o corpo tenha pelo menos 100% da altura da viewport */
+  min-height: 100vh;
+  /* Usa flexbox para centralizar o conteúdo */
+  display: flex;
+  /* Centraliza verticalmente os itens */
+  align-items: center;
+  /* Centraliza horizontalmente os itens */
+  justify-content: center;
+  /* Remove scroll horizontal */
+  overflow-x: hidden;
+  /* Transição suave entre temas */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Container principal */
+main {
+  /* Ocupa toda a largura disponível */
+  width: 100%;
+  /* Limita a largura máxima para melhor legibilidade */
+  max-width: 1200px;
+  /* Adiciona espaçamento interno */
+  padding: 2rem;
+  /* Centraliza o conteúdo do texto */
+  text-align: center;
+}
+
+/* Header */
+header {
+  /* Cria espaço embaixo do cabeçalho */
+  margin-bottom: 3rem;
+}
+
+h1 {
+  /* Define tamanho grande e impactante para o título */
+  font-size: 3.5rem;
+  /* Peso leve para aparência elegante */
+  font-weight: 400;
+  /* Reduz o espaço entre letras para um visual mais compacto */
+  letter-spacing: -0.02em;
+  /* Espaço embaixo do h1 */
+  margin-bottom: 1rem;
+  /* Adiciona sombra para profundidade e melhor legibilidade */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Seção de perfis */
+.profiles {
+  /* Limita a largura máxima */
+  max-width: 800px;
+  /* Centraliza a seção */
+  margin: 0 auto;
+}
+
+/* Lista não ordenada dentro dos perfis */
+.profiles ul {
+  /* Usa grid para layout responsivo */
+  display: grid;
+  /* Cria colunas que se ajustam automaticamente com mínimo de 200px */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* Espaço entre os itens da grid */
+  gap: 2rem;
+  /* Remove padding e margin padrão da lista */
+  padding: 0;
+  margin: 0;
+  /* Centraliza os itens dentro da grid */
+  justify-items: center;
+  /* Remove marcadores da lista */
+  list-style: none;
+}
+
+/* Itens da lista ordenada */
+.profiles li {
+  /* Remove padding e margin padrão dos itens de lista */
+  padding: 0;
+  margin: 0;
+}
+
+/* Botão de perfil */
+.profile {
+  /* Remove o fundo padrão do botão */
+  background: none;
+  /* Remove a borda do botão */
+  border: none;
+  /* Muda o cursor para indicar que é clicável */
+  cursor: pointer;
+  /* Aplica transição suave em todas as propriedades */
+  transition: var(--netflix-transition);
+  /* Arredonda as quinas do botão */
+  border-radius: 8px;
+  /* Adiciona espaçamento interno */
+  padding: 1rem;
+  /* Necessário para que overflow: hidden funcione corretamente */
+  position: relative;
+  /* Esconde conteúdo que transborda */
+  overflow: hidden;
+}
+
+.profile:hover {
+  /* Aumenta o tamanho do perfil em 5% ao passar o mouse */
+  transform: scale(1.05);
+  /* Adiciona um fundo semitransparente que se adapta ao tema */
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ajuste de hover para modo light */
+html.light-mode .profile:hover {
+  /* Em modo light, usar fundo mais escuro */
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.profile:focus {
+  /* Adiciona borda vermelha ao focar (acessibilidade de teclado) */
+  outline: 3px solid var(--netflix-red);
+  /* Afasta o outline da borda do elemento */
+  outline-offset: 4px;
+}
+
+/* Figure e imagem */
+figure {
+  /* Usa flexbox para organizar imagem e legenda */
+  display: flex;
+  /* Organiza os itens em coluna (vertical) */
+  flex-direction: column;
+  /* Centraliza os itens horizontalmente */
+  align-items: center;
+  /* Espaço entre a imagem e a legenda */
+  gap: 1rem;
+}
+
+img {
+  /* Arredonda as quinas da imagem */
+  border-radius: 8px;
+  /* Adiciona sombra para dar profundidade */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  /* Aplica transição suave em todas as mudanças */
+  transition: var(--netflix-transition);
+  /* Define a altura da imagem */
+  width: 150px;
+  /* Define a largura da imagem */
+  height: 150px;
+  /* Garante que a imagem preencha o espaço sem distorcer */
+  object-fit: cover;
+}
+
+.profile:hover img {
+  /* Aumenta a sombra ao passar o mouse para efeito de profundidade */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  /* Aumenta ligeiramente a imagem ao passar o mouse (2%) */
+  transform: scale(1.02);
+}
+
+/* Legenda */
+figcaption {
+  /* Define o tamanho da fonte da legenda */
+  font-size: 1.2rem;
+  /* Define o peso da fonte (mais gordo que o padrão) */
+  font-weight: 500;
+  /* Define a cor da legenda usando variável de tema */
+  color: var(--text-primary);
+  /* Adiciona sombra para melhor legibilidade */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  /* Aplicação de transição suave */
+  transition: var(--netflix-transition);
+}
+
+.profile:hover figcaption {
+  /* Muda a cor do texto para vermelho Netflix ao passar o mouse */
+  color: var(--netflix-red);
+}
+
+/* ============================================
+   RESPONSIVIDADE - MOBILE PEQUENO (até 480px)
+   ============================================ */
+@media (max-width: 480px) {
+  main {
+    /* Reduz o padding em telas pequenas */
+    padding: 1rem;
+  }
+
+  h1 {
+    /* Tamanho bem reduzido para mobile pequeno */
+    font-size: 1.8rem;
+    /* Reduz o espaço entre linhas */
+    line-height: 1.3;
+    /* Reduz a margem inferior */
+    margin-bottom: 1.5rem;
+  }
+
+  /* Grid com 1 coluna para mobile */
+  .profiles ul {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Imagens menores para mobile pequeno */
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Fonte menor para mobile */
+  figcaption {
+    font-size: 0.9rem;
+  }
+
+  /* Reduz padding do perfil */
+  .profile {
+    padding: 0.5rem;
+  }
+
+  /* Figure com gap menor */
+  figure {
+    gap: 0.5rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVIDADE - MOBILE (481px até 768px)
+   ============================================ */
+@media (min-width: 481px) and (max-width: 768px) {
+  main {
+    /* Padding moderado para tablets pequenos */
+    padding: 1.5rem;
+  }
+
+  h1 {
+    /* Tamanho médio para tablets */
+    font-size: 2.2rem;
+    /* Melhora o espaçamento vertical */
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+
+  /* Grid com até 2 colunas em tablets pequenos */
+  .profiles ul {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Imagens médias para tablets */
+  img {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* Fonte moderada */
+  figcaption {
+    font-size: 1rem;
+  }
+
+  .profile {
+    padding: 0.75rem;
+  }
+
+  figure {
+    gap: 0.75rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVIDADE - TABLET (769px até 1024px)
+   ============================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  main {
+    /* Padding robusto para tablets */
+    padding: 2rem;
+    max-width: 900px;
+  }
+
+  h1 {
+    /* Tamanho confortável para tablets */
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Grid com 2 colunas para tablets */
+  .profiles ul {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 2rem;
+  }
+
+  /* Imagens confortáveis */
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
+  figcaption {
+    font-size: 1.1rem;
+  }
+
+  .profile {
+    padding: 1rem;
+  }
+
+  figure {
+    gap: 1rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVIDADE - TELAS ACIMA DE 900px (HORIZONTAL)
+   ============================================ */
+@media (min-width: 900px) {
+  /* Grid com 2 colunas na horizontal */
+  .profiles ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVIDADE - DESKTOP PEQUENO (1025px até 1440px)
+   ============================================ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  main {
+    padding: 2rem;
+    max-width: 1000px;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .profiles ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+  }
+
+  img {
+    width: 160px;
+    height: 160px;
+  }
+
+  figcaption {
+    font-size: 1.15rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVIDADE - DESKTOP GRANDE (acima de 1441px)
+   ============================================ */
+@media (min-width: 1441px) {
+  main {
+    padding: 3rem;
+    max-width: 1200px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .profiles ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+  }
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
+  figcaption {
+    font-size: 1.2rem;
+  }
+}
+
+/* ============================================
+   MELHORIAS DE ACESSIBILIDADE EM DISPOSITIVOS PEQUENOS
+   ============================================ */
+@media (hover: none) {
+  /* Desativa efeitos de hover em telas touch */
+  .profile:hover {
+    transform: none;
+    background-color: transparent;
+  }
+
+  .profile:hover img {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transform: none;
+  }
+
+  .profile:hover figcaption {
+    color: var(--netflix-white);
+  }
+
+  /* Mantém efeito visual em foco (teclado) */
+  .profile:focus-visible {
+    transform: scale(1.05);
+  }
+}
+
+/* Responsividade - Celulares */
+@media (max-width: 480px) {
+  /* Reduz o padding em telas pequenas */
+  main {
+    padding: 1rem;
+  }
+
+  /* Reduz significamente o tamanho do h1 para celulares */
+  h1 {
+    font-size: 2rem;
+  }
+
+  /* Reduz o espaço entre perfis */
+  .profiles {
+    gap: 1rem;
+  }
+
+  /* Reduz mais ainda o tamanho das imagens */
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Reduz o tamanho da legenda para celulares */
+  figcaption {
+    font-size: 1rem;
+  }
+}
+
+/* Animações suaves */
+@keyframes fadeIn {
+  /* Estado inicial: invisível e deslocado para baixo */
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  /* Estado final: visível e na posição normal */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main {
+  /* Aplica animação fadeIn com duração de 0.8s e easing ease-out */
+  animation: fadeIn 0.8s ease-out;
+}
+
+.profile {
+  /* Aplica animação fadeIn com duração de 0.8s */
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Escalonamento de animação para o primeiro perfil - começa mais cedo */
+.profile:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+/* Escalonamento de animação para o segundo perfil - começa um pouco depois */
+.profile:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+/* ============================================
+   ESTILO DO BOTÃO DE ALTERNÂNCIA DE TEMA
+   ============================================ */
+
+/* Container do botão de tema */
+.theme-toggle-container {
+  /* FixedPosition no canto superior direito */
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  /* Z-index para aparecer acima de todo conteúdo */
+  z-index: 1000;
+}
+
+/* Botão de alternância de tema */
+.theme-toggle-btn {
+  /* Remove estilo padrão do botão */
+  background: none;
+  border: 2px solid var(--text-primary);
+  /* Padding para deixar o ícone confortável */
+  padding: 0.5rem 0.75rem;
+  /* Fonte grande para melhor visualização do ícone */
+  font-size: 1.5rem;
+  /* Cursor para indicar clicabilidade */
+  cursor: pointer;
+  /* Arredonda as quinas */
+  border-radius: 50%;
+  /* Transição suave ao alternar temas */
+  transition: all 0.3s ease;
+  /* Sombra sutil */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  /* Cor de texto do botão */
+  color: var(--text-primary);
+  /* Efeito hover */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Efeito hover do botão */
+.theme-toggle-btn:hover {
+  /* Aumenta o tamanho ligeiramente */
+  transform: scale(1.1);
+  /* Aumenta a sombra */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  /* Muda a cor de fundo no tema claro */
+  background-color: var(--bg-secondary);
+}
+
+/* Efeito ativo do botão */
+.theme-toggle-btn:active {
+  /* Diminui o tamanho ao clicar */
+  transform: scale(0.95);
+}
+
+/* Responsividade para mobile */
+@media (max-width: 480px) {
+  .theme-toggle-container {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .theme-toggle-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 1.2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: 1.5px;
+  }
+}
